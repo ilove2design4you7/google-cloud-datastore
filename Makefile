@@ -18,7 +18,7 @@ ZIP=zip
 VERSION=$(shell sed -ne "s/__version__ = '\(.*\)'/\1/p" setup.py)
 
 all:
-	${PROTOC} --proto_path=../proto ../proto/datastore_v1.proto --python_out=googledatastore
+	${PROTOC} --proto_path=proto proto/datastore_v1.proto --python_out=googledatastore
 	python setup.py sdist --formats=gztar,zip
 	sphinx-apidoc --full -o docs googledatastore googledatastore/*_test.py
 	PYTHONPATH=.. make -C docs html
